@@ -48,8 +48,8 @@ json::value {
              )
             )
       
-    #case 6 ( #("date") )
-    #case 7 ( #("currency") )
+    #case 6 ( #("date(", $e.d,")") )
+    #case 7 ( #("currency(", $e.d,")") )
     #case 8 ( #("length") )
     #case 9 ( #if( ((unsigned*)$e.d)[2] == 0 ) (
                 #("array(0)")
@@ -81,6 +81,6 @@ json::value {
              )
 
     #default ( #array(expr: 0, size: 0) )
-    #except  ( #([raw]: [$e,!]))
+    #except  ( #([raw]: [$e,!]) )
   )
 }
