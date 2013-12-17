@@ -5,8 +5,8 @@ Supported the following [json::value](http://terrainformatica.com/forums/topic.p
 * undefined
 * null
 * bool
-* int
+* int, currency, date
 * double
-* string
+* string, bytes
 * array
-* bytes (same as string in fact)
+
