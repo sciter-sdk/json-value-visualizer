@@ -1,0 +1,86 @@
+[Visualizer]
+
+json::string_t<char> {
+	preview
+	(
+		#if($e._data == 0)(
+			"<null>"
+		)#else(
+			[$e._data->chars,s]
+		)
+	)
+	stringview	([$e._data->chars,sb])
+  children
+  (
+    #([raw]: [$e,!],  #array( expr: $e._data->chars[$i], size: $e._data->length))
+  )
+}
+json::string_t<wchar_t> {
+	preview
+	(
+		#if($e._data == 0)(
+			"<null>"
+		)#else(
+			[$e._data->chars,su]
+		)
+	)
+	stringview	([$e._data->chars,sub])
+  children
+  (
+    #([raw]: [$e,!],  #array( expr: $e._data->chars[$i], size: $e._data->length))
+  )
+}
+
+json::value {
+	preview
+	(
+    #switch( $e.t )
+    #case 0 ( #("undefined") )
+    #case 1 ( #("null") )
+    #case 2 ( #("bool(", $e.d,")") )
+    #case 3 ( #("int(", $e.d,")") )
+    #case 4 ( #("float(", *(double*)&$e.d, ")") )
+  
+    #case 5 ( #if($e.u == 0) (
+             #("string(", ((unsigned*)$e.d)[1],") ", [(const wchar_t*)&((unsigned*)$e.d)[2], su] )
+             )#else(
+             #("bytes(", ((unsigned*)$e.d)[1],") ", [(const wchar_t*)&((unsigned*)$e.d)[2], su] )
+             )
+            )
+      
+    #case 6 ( #("date") )
+    #case 7 ( #("currency") )
+    #case 8 ( #("length") )
+    #case 9 ( #if( ((unsigned*)$e.d)[2] == 0 ) (
+                #("array(0)")
+              )#else(
+                #("array(", *(((unsigned**)$e.d)[2] - 1),") ", #array(expr: ((json::value*)((unsigned*)$e.d)[2])[$i], size: *(((unsigned**)$e.d)[2] - 1))  )
+              )
+             )
+    #case 10 ( #("map") )
+    #case 11 ( #("function") )
+    #case 12 ( #("bytes") )
+    #case 13 ( #("object") )
+    #case 14 ( #("dom_object") )
+    #default ( "unknown" )
+    #except  ( #([raw]: [$e,!]))
+	)
+  children
+  (
+    #switch( $e.t )
+  
+    #case 5 ( 
+             #array(expr: ((const wchar_t*)&((unsigned*)$e.d)[2])[$i], size: ((unsigned*)$e.d)[1])
+            )
+      
+    #case 9 ( #if( ((unsigned*)$e.d)[2] == 0 ) (
+                #array(expr: 0, size: 0)
+              )#else(
+                #(count: *(((unsigned**)$e.d)[2] - 1), #array(expr: ((json::value*)((unsigned*)$e.d)[2])[$i], size: *(((unsigned**)$e.d)[2] - 1))  )
+              )
+             )
+
+    #default ( #array(expr: 0, size: 0) )
+    #except  ( #([raw]: [$e,!]))
+  )
+}
