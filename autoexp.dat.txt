@@ -37,7 +37,7 @@ json::value {
     #switch( $e.t )
     #case 0 ( #("undefined") )
     #case 1 ( #("null") )
-    #case 2 ( #("bool(", $e.d,")") )
+    #case 2 ( #if( $e.d == 0 ) ("false") #else ("true") )
     #case 3 ( #("int(", $e.d,")") )
     #case 4 ( #("float(", *(double*)&$e.d, ")") )
   
