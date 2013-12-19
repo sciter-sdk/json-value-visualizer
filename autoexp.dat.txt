@@ -42,9 +42,9 @@ json::value {
     #case 4 ( #( *(double*)&$e.d ) )
   
     #case 5 ( #if($e.u == 0) (
-             #("string(", ((unsigned*)$e.d)[1],") ", [(const wchar_t*)&((unsigned*)$e.d)[2], su] )
+             #([(const wchar_t*)&((unsigned*)$e.d)[2], su] )
              )#else(
-             #("bytes(", ((unsigned*)$e.d)[1],") ", [(const wchar_t*)&((unsigned*)$e.d)[2], su] )
+             #("b", [(const wchar_t*)&((unsigned*)$e.d)[2], su] )
              )
             )
       
@@ -69,9 +69,7 @@ json::value {
   (
     #switch( $e.t )
   
-    #case 5 ( 
-             #array(expr: ((const wchar_t*)&((unsigned*)$e.d)[2])[$i], size: ((unsigned*)$e.d)[1])
-            )
+    #case 5 (#(count: ((unsigned*)$e.d)[1], #array(expr: ((const wchar_t*)&((unsigned*)$e.d)[2])[$i], size: ((unsigned*)$e.d)[1]) ))
       
     #case 9 ( #if( ((unsigned*)$e.d)[2] == 0 ) (
                 #array(expr: 0, size: 0)
