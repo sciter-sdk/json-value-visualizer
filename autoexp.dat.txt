@@ -65,6 +65,11 @@ json::value {
     #default ( "unknown" )
     #except  ( #([raw]: [$e,!]))
 	)
+  stringview
+  (
+    #if ($e.t == 5) ( #([(const wchar_t*)&((unsigned*)$e.d)[2], sub]) )
+    #else (#( [(const wchar_t*)0, sb] ))
+  )
   children
   (
     #switch( $e.t )
