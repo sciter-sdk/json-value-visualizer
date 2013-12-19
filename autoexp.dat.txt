@@ -57,7 +57,12 @@ json::value {
                 #("array(", *(((unsigned**)$e.d)[2] - 1),") ", #array(expr: ((json::value*)((unsigned*)$e.d)[2])[$i], size: *(((unsigned**)$e.d)[2] - 1))  )
               )
              )
-    #case 10 ( #("map") )
+    #case 10 ( #if( ((unsigned*)$e.d)[6] == 0 ) (
+                #("map(0)")
+              )#else(
+                #("map(", *(((unsigned**)$e.d)[6] - 1),"): ", #array(expr: ((json_value_pair*)((unsigned*)$e.d)[6])[$i], size: *(((unsigned**)$e.d)[6] - 1))  )
+              )
+             )
     #case 11 ( #("function") )
     #case 12 ( #("bytes") )
     #case 13 ( #("object") )
@@ -80,6 +85,13 @@ json::value {
                 #array(expr: 0, size: 0)
               )#else(
                 #(count: *(((unsigned**)$e.d)[2] - 1), #array(expr: ((json::value*)((unsigned*)$e.d)[2])[$i], size: *(((unsigned**)$e.d)[2] - 1))  )
+              )
+             )
+
+    #case 10 ( #if( ((unsigned*)$e.d)[6] == 0 ) (
+                #array(expr: 0, size: 0)
+              )#else(
+                #array(expr: ((json_value_pair*)((unsigned*)$e.d)[6])[$i], size: *(((unsigned**)$e.d)[6] - 1))
               )
              )
 
