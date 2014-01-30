@@ -38,7 +38,7 @@ json::value {
     #case 0 ( #("undefined") )
     #case 1 ( #("null") )
     #case 2 ( #if( $e.d == 0 ) ("false") #else ("true") )
-    #case 3 ( #( $e.d ) )
+    #case 3 ( #( (signed __int64)$e.d ) )
     #case 4 ( #( *(double*)&$e.d ) )
   
     #case 5 ( #if($e.u == 0) (
