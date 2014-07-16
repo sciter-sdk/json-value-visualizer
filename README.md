@@ -9,4 +9,6 @@ Supported the following [json::value](http://terrainformatica.com/forums/topic.p
 * double
 * string, bytes
 * array
-* map — requires `json_value_pair` type for visualize key-value pairs (it can be `typedef std::pair<json::value,json::value json_value_pair`)
+* map — requires `json_value_pair` type for visualize key-value pairs (it can be `typedef std::pair<json::value,json::value> json_value_pair`)
+
+**Note**: for Sciter 3.1 and higher, use the [sciter-3.1](https://github.com/pravic/json-value-visualizer/tree/sciter-3.1) branch.
