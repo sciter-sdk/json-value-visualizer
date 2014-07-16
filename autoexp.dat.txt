@@ -1,6 +1,6 @@
 [Visualizer]
 
-json::value {
+sciter::value {
 	preview
 	(
     #switch( $e.t )
@@ -23,7 +23,7 @@ json::value {
     #case 9 ( #if( ((unsigned*)$e.d)[2] == 0 ) (
                 #("array(0)")
               )#else(
-                #("array(", *(((unsigned**)$e.d)[2] - 1),"): ", #array(expr: ((json::value*)((unsigned*)$e.d)[2])[$i], size: *(((unsigned**)$e.d)[2] - 1))  )
+                #("array(", *(((unsigned**)$e.d)[2] - 1),"): ", #array(expr: ((sciter::value*)((unsigned*)$e.d)[2])[$i], size: *(((unsigned**)$e.d)[2] - 1))  )
               )
              )
     #case 10 ( #if( ((unsigned*)$e.d)[6] == 0 ) (
@@ -53,7 +53,7 @@ json::value {
     #case 9 ( #if( ((unsigned*)$e.d)[2] == 0 ) (
                 #array(expr: 0, size: 0)
               )#else(
-                #array(expr: ((json::value*)((unsigned*)$e.d)[2])[$i], size: *(((unsigned**)$e.d)[2] - 1))
+                #array(expr: ((sciter::value*)((unsigned*)$e.d)[2])[$i], size: *(((unsigned**)$e.d)[2] - 1))
               )
              )
 
