@@ -11,4 +11,6 @@ Supported the following [json::value](http://terrainformatica.com/forums/topic.p
 * array
 * map — requires `json_value_pair` type for visualize key-value pairs (it can be `typedef std::pair<json::value,json::value> json_value_pair`)
 
+**VS 2010-2013** users: [how to enable](http://stackoverflow.com/a/21008426/736762) autoexp.dat.
+
 **Note**: for Sciter 3.1 and higher, use the [sciter-3.1](https://github.com/pravic/json-value-visualizer/tree/sciter-3.1) branch.
