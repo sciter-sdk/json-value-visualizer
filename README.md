@@ -1,6 +1,6 @@
-### terrainformatica json::value and json::string visualizer
+### terrainformatica sciter::value (formerly known as json::value)
 
-Supported the following [json::value](http://terrainformatica.com/forums/topic.php?id=670) types:
+Supported the following [sciter::value](http://terrainformatica.com/forums/topic.php?id=670) types:
 
 * undefined
 * null
@@ -9,4 +9,4 @@ Supported the following [json::value](http://terrainformatica.com/forums/topic.p
 * double
 * string, bytes
 * array
-* map — requires `json_value_pair` type for visualize key-value pairs (it can be `typedef std::pair<json::value,json::value json_value_pair`)
+* map — requires `json_value_pair` type for visualize key-value pairs (it can be `typedef std::pair<sciter::value,sciter::value> json_value_pair`)
