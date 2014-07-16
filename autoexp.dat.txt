@@ -1,36 +1,5 @@
 [Visualizer]
 
-json::string_t<char> {
-	preview
-	(
-		#if($e._data == 0)(
-			"<null>"
-		)#else(
-			[$e._data->chars,s]
-		)
-	)
-	stringview	([$e._data->chars,sb])
-  children
-  (
-    #([raw]: [$e,!],  #array( expr: $e._data->chars[$i], size: $e._data->length))
-  )
-}
-json::string_t<wchar_t> {
-	preview
-	(
-		#if($e._data == 0)(
-			"<null>"
-		)#else(
-			[$e._data->chars,su]
-		)
-	)
-	stringview	([$e._data->chars,sub])
-  children
-  (
-    #([raw]: [$e,!],  #array( expr: $e._data->chars[$i], size: $e._data->length))
-  )
-}
-
 json::value {
 	preview
 	(
