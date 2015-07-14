@@ -20,16 +20,16 @@ sciter::value {
     #case 6 ( #("date(", $e.d,")") )
     #case 7 ( #("currency(", $e.d,")") )
     #case 8 ( #("length") )
-    #case 9 ( #if( ((unsigned*)$e.d)[2] == 0 ) (
+    #case 9 ( #if( ((int**)$e.d)[2] == 0 ) (
                 #("array(0)")
               )#else(
-                #("array(", *(((unsigned**)$e.d)[2] - 1),"): ", #array(expr: ((sciter::value*)((unsigned*)$e.d)[2])[$i], size: *(((unsigned**)$e.d)[2] - 1))  )
+                #("array(", ((int**)$e.d)[2][1], "): ", #array(expr: ((sciter::value*)( ((int**)$e.d)[2] + 3 ))[$i], size: ((int**)$e.d)[2][1] ))
               )
              )
-    #case 10 ( #if( ((unsigned*)$e.d)[6] == 0 ) (
+    #case 10 ( #if( ((int**)$e.d)[6] == 0 ) (
                 #("map(0)")
               )#else(
-                #("map(", *(((unsigned**)$e.d)[6] - 1),"): ", #array(expr: ((json_value_pair*)((unsigned*)$e.d)[6])[$i], size: *(((unsigned**)$e.d)[6] - 1))  )
+                #("map(", ((int**)$e.d)[6][1] ,"): ", #array(expr: ((json_value_pair*)( ((int**)$e.d)[6] + 3 ))[$i], size: ((int**)$e.d)[6][1] ))
               )
              )
     #case 11 ( #("function") )
@@ -49,18 +49,18 @@ sciter::value {
     #switch( $e.t )
   
     #case 5 (#(count: ((unsigned*)$e.d)[1], #array(expr: ((const wchar_t*)&((unsigned*)$e.d)[2])[$i], size: ((unsigned*)$e.d)[1]) ))
-      
-    #case 9 ( #if( ((unsigned*)$e.d)[2] == 0 ) (
+
+    #case 9 ( #if( ((int**)$e.d)[2] == 0 ) (
                 #array(expr: 0, size: 0)
               )#else(
-                #array(expr: ((sciter::value*)((unsigned*)$e.d)[2])[$i], size: *(((unsigned**)$e.d)[2] - 1))
+                #array(expr: ((sciter::value*)( ((int**)$e.d)[2] + 3 ))[$i], size: ((int**)$e.d)[2][1] )
               )
              )
 
-    #case 10 ( #if( ((unsigned*)$e.d)[6] == 0 ) (
+    #case 10 ( #if( ((int**)$e.d)[6] == 0 ) (
                 #array(expr: 0, size: 0)
               )#else(
-                #array(expr: ((json_value_pair*)((unsigned*)$e.d)[6])[$i], size: *(((unsigned**)$e.d)[6] - 1))
+                #array(expr: ((json_value_pair*)( ((int**)$e.d)[6] + 3 ))[$i], size: ((int**)$e.d)[6][1] )
               )
              )
 
