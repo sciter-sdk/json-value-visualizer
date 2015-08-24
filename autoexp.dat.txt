@@ -48,20 +48,26 @@ sciter::value {
   (
     #switch( $e.t )
   
-    #case 5 (#(count: ((unsigned*)$e.d)[1], #array(expr: ((const wchar_t*)&((unsigned*)$e.d)[2])[$i], size: ((unsigned*)$e.d)[1]) ))
+    #case 5 (#(
+      count: ((unsigned*)$e.d)[1],
+      refs: ((unsigned*)$e.d)[0],
+      #array(expr: ((const wchar_t*)&((unsigned*)$e.d)[2])[$i], size: ((unsigned*)$e.d)[1])
+    ))
 
     #case 9 ( #if( ((int**)$e.d)[2] == 0 ) (
                 #array(expr: 0, size: 0)
-              )#else(
+              )#else(#(
+                refs: ((unsigned*)$e.d)[1],
                 #array(expr: ((sciter::value*)( ((int**)$e.d)[2] + 3 ))[$i], size: ((int**)$e.d)[2][1] )
-              )
+              ))
              )
 
     #case 10 ( #if( ((int**)$e.d)[6] == 0 ) (
                 #array(expr: 0, size: 0)
-              )#else(
+              )#else(#(
+                refs: ((unsigned*)$e.d)[1],
                 #array(expr: ((json_value_pair*)( ((int**)$e.d)[6] + 3 ))[$i], size: ((int**)$e.d)[6][1] )
-              )
+              ))
              )
 
     #default ( #array(expr: 0, size: 0) )
