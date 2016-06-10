@@ -38,7 +38,7 @@ Last line to ensure that compiler will not remove it from binary.
 
 **VS 2010**: [how to enable](http://stackoverflow.com/a/21008426/736762) autoexp.dat.
 
-**VS 2012+**: use VSIX.
+**VS 2012+**: use VSIX from [releases](https://github.com/pravic/json-value-visualizer/releases) page.
 
 
 ## Requires:
