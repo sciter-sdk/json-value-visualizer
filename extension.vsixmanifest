@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Id="TerraInformatica.Sciter.Value.Visualizer" Language="en-US" Version="1.0.0" Publisher="Terra Informatica, Inc." />
+    <DisplayName>Sciter value visualizer</DisplayName>
+    <Description>JSON value visualizer of sciter::value from Terra Informatica, Inc.</Description>
+    <MoreInfo>https://github.com/pravic/json-value-visualizer</MoreInfo>
+    <Icon>favicon.ico</Icon>
+    <PreviewImage>sciter-value.png</PreviewImage>
+    <Tags>sciter;json;htmlayout;terrainformatica;Visualizer</Tags>
+  </Metadata>
+  <Installation>
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[11.0,15.0]" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[11.0,15.0]" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Premium" Version="[11.0,15.0]" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Ultimate" Version="[11.0,15.0]" />
+  </Installation>
+  <Assets>
+    <Asset Type="NativeVisualizer" Path="sciter.natvis"/>
+  </Assets>
+</PackageManifest>
