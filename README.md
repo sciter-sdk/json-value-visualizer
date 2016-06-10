@@ -1,4 +1,4 @@
-### terrainformatica sciter::value (formerly known as json::value)
+## terrainformatica sciter::value (formerly known as json::value)
 
 Supported the following [sciter::value](http://terrainformatica.com/forums/topic.php?id=670) types:
 
@@ -32,7 +32,7 @@ extern json_value_pair __visualize_json_value_pair = {};
 
 Last line to ensure that compiler will not remove it from binary.
 
-#### Notes:
+## Notes:
 
 **VS 2005-2008** users: use [autoexp.dat](autoexp.dat.txt)
 
@@ -41,8 +41,11 @@ Last line to ensure that compiler will not remove it from binary.
 **VS 2012+**: use VSIX.
 
 
-**Requires** Sciter 3.1 or higher. For lower versions use [htmlayout](https://github.com/pravic/json-value-visualizer/tree/htmlayout) branch.
+## Requires:
 
-Screenshot:
+Sciter 3.1 or higher. For lower versions use [htmlayout](https://github.com/pravic/json-value-visualizer/tree/htmlayout) branch.
+
+
+### Screenshot:
 
 ![Debug screenshot](sciter-value.png)
