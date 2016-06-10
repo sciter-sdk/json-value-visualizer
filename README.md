@@ -32,6 +32,14 @@ extern json_value_pair __visualize_json_value_pair = {};
 
 Last line to ensure that compiler will not remove it from binary.
 
+#### Notes:
+
+**VS 2005-2008** users: use [autoexp.dat](autoexp.dat.txt)
+**VS 2010**: [how to enable](http://stackoverflow.com/a/21008426/736762) autoexp.dat.
+**VS 2012+**: use VSIX.
+
+**Requires** Sciter 3.1 or higher. For lower versions use [htmlayout](https://github.com/pravic/json-value-visualizer/tree/htmlayout) branch.
+
 Screenshot:
 
 ![Debug screenshot](sciter-value.png)
