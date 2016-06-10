@@ -34,11 +34,12 @@ Last line to ensure that compiler will not remove it from binary.
 
 ## Notes:
 
-**VS 2005-2008** users: use [autoexp.dat](autoexp.dat.txt)
+**VS 2012** and higher: download VSIX from [releases](https://github.com/pravic/json-value-visualizer/releases) page.
 
-**VS 2010**: [how to enable](http://stackoverflow.com/a/21008426/736762) autoexp.dat.
+**VS 2010**: read [how to enable](http://stackoverflow.com/a/21008426/736762) autoexp.dat.
 
-**VS 2012+**: use VSIX from [releases](https://github.com/pravic/json-value-visualizer/releases) page.
+**VS 2005-2008**: use [autoexp.dat](autoexp.dat.txt).
+
 
 
 ## Requires:
