@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+  <Type Name="sciter::value">
+    <DisplayString Condition="t == 0">undefined</DisplayString>
+    <DisplayString Condition="t == 1">null</DisplayString>
+
+    <DisplayString Condition="t == 2 &amp;&amp; d == 1">true</DisplayString>
+    <DisplayString Condition="t == 2 &amp;&amp; d == 0">false</DisplayString>
+
+    <DisplayString Condition="t == 3">{(signed __int64)d}</DisplayString>
+    <DisplayString Condition="t == 4">{ *(double*)&amp;d}</DisplayString>
+
+    <DisplayString Condition="t == 5 &amp;&amp; u == 0">{(const wchar_t*)&amp;((unsigned*)d)[2], su}</DisplayString>
+    <DisplayString Condition="t == 5 &amp;&amp; u == 1">error({(const wchar_t*)&amp;((unsigned*)d)[2], su})</DisplayString>
+    <DisplayString Condition="t == 5 &amp;&amp; u == 2">secure({(const wchar_t*)&amp;((unsigned*)d)[2], su})</DisplayString>
+    <DisplayString Condition="t == 5 &amp;&amp; u == 0xffff">#{(const wchar_t*)&amp;((unsigned*)d)[2], su}</DisplayString>
+
+    <DisplayString Condition="t == 6">date({d})</DisplayString>
+    <DisplayString Condition="t == 7">currency({d})</DisplayString>
+    <DisplayString Condition="t == 8">length</DisplayString>
+
+    <DisplayString Condition="t == 9 &amp;&amp; ((int**)d)[2] == 0">array(0)</DisplayString>
+    <DisplayString Condition="t == 9 &amp;&amp; ((int**)d)[2] != 0">array({((int**)d)[2][1]})</DisplayString>
+
+    <DisplayString Condition="t == 10 &amp;&amp; ((int**)d)[6] == 0">map(0)</DisplayString>
+    <DisplayString Condition="t == 10 &amp;&amp; ((int**)d)[6] != 0">map({((int**)d)[6][1]})</DisplayString>
+
+    <DisplayString Condition="t == 11">function</DisplayString>
+
+    <DisplayString Condition="t == 12">bytes({((unsigned*)d)[1]})</DisplayString>
+
+    <DisplayString Condition="t == 13">object</DisplayString>
+    <DisplayString Condition="t == 14">dom_object</DisplayString>
+    <DisplayString Condition="t == 15">resource</DisplayString>
+    <DisplayString Condition="t == 16">range</DisplayString>
+    <DisplayString Condition="t == 17">duration</DisplayString>
+    <DisplayString Condition="t == 18">angle</DisplayString>
+    <DisplayString Condition="t == 19">color</DisplayString>
+    <DisplayString Condition="t > 19">&lt;unknown: {t}&gt;</DisplayString>
+
+    <StringView Condition="t == 5">(const wchar_t*)&amp;((unsigned*)d)[2], su</StringView>
+
+    <Expand>
+
+      <Synthetic Name="string" Condition="t == 5">
+        <Expand>
+          <Item Name="refs">((unsigned*)d)[0]</Item>
+          <Item Name="count">((unsigned*)d)[1]</Item>
+          <ArrayItems>
+            <Size>((unsigned*)d)[1]</Size>
+            <ValuePointer>((const wchar_t*)&amp;((unsigned*)d)[2])</ValuePointer>
+          </ArrayItems>
+        </Expand>
+      </Synthetic>
+
+      <Synthetic Name="array" Condition="t == 9 &amp;&amp; ((int**)d)[2] != 0">
+        <Expand>
+          <Item Name="refs">((unsigned*)d)[1]</Item>
+          <Item Name="count">((unsigned**)d)[2][1]</Item>
+          <Item Name="capacity">((unsigned**)d)[2][2]</Item>
+          <ArrayItems>
+            <Size>((unsigned**)d)[2][1]</Size>
+            <ValuePointer>((sciter::value*)( ((int**)d)[2] + 3 ))</ValuePointer>
+          </ArrayItems>
+        </Expand>
+      </Synthetic>
+
+      <Synthetic Name="map" Condition="t == 10 &amp;&amp; ((int**)d)[6] != 0">
+        <Expand>
+          <Item Name="refs">((unsigned*)d)[1]</Item>
+          <Item Name="count">((unsigned**)d)[6][1]</Item>
+          <Item Name="capacity">((unsigned**)d)[6][2]</Item>
+          <ArrayItems>
+            <Size>((unsigned**)d)[6][1]</Size>
+            <ValuePointer>((json_value_pair*)( ((int**)d)[6] + 3 ))</ValuePointer>
+          </ArrayItems>
+        </Expand>
+      </Synthetic>
+
+      <Synthetic Name="bytes" Condition="t == 12 &amp;&amp; ((int**)d)[2] != 0">
+        <Expand>
+          <Item Name="refs">((unsigned*)d)[0]</Item>
+          <Item Name="count">((unsigned*)d)[1]</Item>
+          <Item Name="capacity">((unsigned*)d)[2]</Item>
+          <ArrayItems>
+            <Size>((unsigned*)d)[1]</Size>
+            <ValuePointer>((unsigned char*)( ((int*)d) + 3 ))</ValuePointer>
+          </ArrayItems>
+        </Expand>
+      </Synthetic>
+
+    </Expand>
+  </Type>
+</AutoVisualizer>
