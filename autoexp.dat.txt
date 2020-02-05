@@ -36,6 +36,11 @@ sciter::value {
     #case 12 ( #("bytes") )
     #case 13 ( #("object") )
     #case 14 ( #("dom_object") )
+
+    #case 17 ( #("duration(",  *(double*)&$e.d, ")") )
+    #case 18 ( #("angle(",  *(double*)&$e.d, ")") )
+    #case 19 ( #("color(", (void*)$e.d, ")") )
+
     #default ( "unknown" )
     #except  ( #([raw]: [$e,!]))
 	)
