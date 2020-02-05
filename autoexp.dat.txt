@@ -11,9 +11,9 @@ sciter::value {
     #case 4 ( #( *(double*)&$e.d ) )
   
     #case 5 ( #if($e.u == 0) (
-             #([(const wchar_t*)&((unsigned*)$e.d)[2], su] )
+             #([(const wchar_t*)&((unsigned*)$e.d)[3], su] )
              )#else(
-             #("b", [(const wchar_t*)&((unsigned*)$e.d)[2], su] )
+             #("b", [(const wchar_t*)&((unsigned*)$e.d)[3], su] )
              )
             )
       
@@ -46,7 +46,7 @@ sciter::value {
 	)
   stringview
   (
-    #if ($e.t == 5) ( #([(const wchar_t*)&((unsigned*)$e.d)[2], sub]) )
+    #if ($e.t == 5) ( #([(const wchar_t*)&((unsigned*)$e.d)[3], sub]) )
     #else (#( [(const wchar_t*)0, sb] ))
   )
   children
@@ -56,7 +56,7 @@ sciter::value {
     #case 5 (#(
       count: ((unsigned*)$e.d)[1],
       refs: ((unsigned*)$e.d)[0],
-      #array(expr: ((const wchar_t*)&((unsigned*)$e.d)[2])[$i], size: ((unsigned*)$e.d)[1])
+      #array(expr: ((const wchar_t*)&((unsigned*)$e.d)[3])[$i], size: ((unsigned*)$e.d)[1])
     ))
 
     #case 9 ( #if( ((int**)$e.d)[2] == 0 ) (
