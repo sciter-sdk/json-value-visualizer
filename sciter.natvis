@@ -33,9 +33,9 @@
     <DisplayString Condition="t == 14">dom_object</DisplayString>
     <DisplayString Condition="t == 15">resource</DisplayString>
     <DisplayString Condition="t == 16">range</DisplayString>
-    <DisplayString Condition="t == 17">duration</DisplayString>
-    <DisplayString Condition="t == 18">angle</DisplayString>
-    <DisplayString Condition="t == 19">color</DisplayString>
+    <DisplayString Condition="t == 17">duration({ *(double*)&amp;d })</DisplayString>
+    <DisplayString Condition="t == 18">angle({ *(double*)&amp;d })</DisplayString>
+    <DisplayString Condition="t == 19">color({ d, Xb })</DisplayString>
     <DisplayString Condition="t > 19">&lt;unknown: {t}&gt;</DisplayString>
 
     <StringView Condition="t == 5">(const wchar_t*)&amp;((size_t*)d)[3], su</StringView>
