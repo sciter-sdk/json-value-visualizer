@@ -8,12 +8,12 @@
     <DisplayString Condition="t == 2 &amp;&amp; d == 0">false</DisplayString>
 
     <DisplayString Condition="t == 3">{(signed __int64)d}</DisplayString>
-    <DisplayString Condition="t == 4">{ *(double*)&amp;d}</DisplayString>
+    <DisplayString Condition="t == 4">{ *(double*)&amp;d }</DisplayString>
 
-    <DisplayString Condition="t == 5 &amp;&amp; u == 0">{(const wchar_t*)&amp;((unsigned*)d)[2], su}</DisplayString>
-    <DisplayString Condition="t == 5 &amp;&amp; u == 1">error({(const wchar_t*)&amp;((unsigned*)d)[2], su})</DisplayString>
-    <DisplayString Condition="t == 5 &amp;&amp; u == 2">secure({(const wchar_t*)&amp;((unsigned*)d)[2], su})</DisplayString>
-    <DisplayString Condition="t == 5 &amp;&amp; u == 0xffff">#{(const wchar_t*)&amp;((unsigned*)d)[2], su}</DisplayString>
+    <DisplayString Condition="t == 5 &amp;&amp; u == 0">{(const wchar_t*)&amp;((size_t*)d)[3], su}</DisplayString>
+    <DisplayString Condition="t == 5 &amp;&amp; u == 1">error({(const wchar_t*)&amp;((size_t*)d)[3], su})</DisplayString>
+    <DisplayString Condition="t == 5 &amp;&amp; u == 2">secure({(const wchar_t*)&amp;((size_t*)d)[3], su})</DisplayString>
+    <DisplayString Condition="t == 5 &amp;&amp; u == 0xffff">#{(const wchar_t*)&amp;((size_t*)d)[3], su}</DisplayString>
 
     <DisplayString Condition="t == 6">date({d})</DisplayString>
     <DisplayString Condition="t == 7">currency({d})</DisplayString>
@@ -38,22 +38,43 @@
     <DisplayString Condition="t == 19">color</DisplayString>
     <DisplayString Condition="t > 19">&lt;unknown: {t}&gt;</DisplayString>
 
-    <StringView Condition="t == 5">(const wchar_t*)&amp;((unsigned*)d)[2], su</StringView>
+    <StringView Condition="t == 5">(const wchar_t*)&amp;((size_t*)d)[3], su</StringView>
 
     <Expand>
 
       <Synthetic Name="string" Condition="t == 5">
+      	<!-- 
+      		tool::string_t<CT>::data {
+      		  atomic_long ref_count;
+      		  size_t allocated;
+      		  size_t length;
+      		  CT chars[];
+      		}
+      	-->
         <Expand>
-          <Item Name="refs">((unsigned*)d)[0]</Item>
-          <Item Name="count">((unsigned*)d)[1]</Item>
+          <Item Name="refs">((size_t*)d)[0]</Item>
+          <Item Name="count">((size_t*)d)[2]</Item>
+          <Item Name="capacity">((size_t*)d)[1]</Item>
           <ArrayItems>
-            <Size>((unsigned*)d)[1]</Size>
-            <ValuePointer>((const wchar_t*)&amp;((unsigned*)d)[2])</ValuePointer>
+            <Size>((size_t*)d)[2]</Size>
+            <ValuePointer>((const wchar_t*)&amp;((size_t*)d)[3])</ValuePointer>
           </ArrayItems>
         </Expand>
       </Synthetic>
 
       <Synthetic Name="array" Condition="t == 9 &amp;&amp; ((int**)d)[2] != 0">
+        <!--
+          tool::array_value {
+            long resource::ref_count;
+            tool::array<T>::array_data* data;
+          }
+          tool::array<T>::array_data {
+            long ref_count;
+            size_t size;
+            size_t capacity;
+            T elements[];
+          }
+        -->
         <Expand>
           <Item Name="refs">((unsigned*)d)[1]</Item>
           <Item Name="count">((unsigned**)d)[2][1]</Item>
@@ -66,6 +87,18 @@
       </Synthetic>
 
       <Synthetic Name="map" Condition="t == 10 &amp;&amp; ((int**)d)[6] != 0">
+        <!--
+          tool::map_value {
+            long resource::ref_count;
+            ustring name;
+            dictionary<value,value> params;
+          }
+          tool::dictionary<K,V> {
+            size_t hash_size;
+            hash_item** hash_table;
+            array<dict_item> hash_elements;
+          }
+        -->
         <Expand>
           <Item Name="refs">((unsigned*)d)[1]</Item>
           <Item Name="count">((unsigned**)d)[6][1]</Item>
