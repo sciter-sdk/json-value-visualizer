@@ -1,1 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="vsixmanifest" ContentType="text/xml" /><Default Extension="png" ContentType="application/octet-stream" /><Default Extension="ico" ContentType="application/octet-stream" /><Default Extension="zip" ContentType="application/zip" /></Types>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+	<Default ContentType="text/xml" Extension="vsixmanifest"/>
+	<Default ContentType="text/xml" Extension="natvis"/>
+	<Default ContentType="application/octet-stream" Extension="png"/>
+	<Default ContentType="application/octet-stream" Extension="ico"/>
+	<Default ContentType="application/zip" Extension="zip"/>
+</Types>
