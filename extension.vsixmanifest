@@ -10,10 +10,10 @@
     <Tags>sciter;json;htmlayout;terrainformatica;Visualizer</Tags>
   </Metadata>
   <Installation>
-    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[11.0,16.0]" />
-    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[11.0,16.0]" />
-    <InstallationTarget Id="Microsoft.VisualStudio.Premium" Version="[11.0,16.0]" />
-    <InstallationTarget Id="Microsoft.VisualStudio.Ultimate" Version="[11.0,16.0]" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[11.0,17.0]" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[11.0,17.0]" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Premium" Version="[11.0,17.0]" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Ultimate" Version="[11.0,17.0]" />
   </Installation>
   <Assets>
     <Asset Type="NativeVisualizer" Path="sciter.natvis"/>
