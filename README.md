@@ -8,6 +8,8 @@ Supported the following [sciter::value](http://terrainformatica.com/forums/topic
 * int
 * double
 * currency, date - displayed just as int
+* color - displayed as hexadecimal int
+* duration, angle
 * string (including #symbols)
 * bytes (as byte array)
 * array
