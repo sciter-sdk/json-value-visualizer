@@ -13,7 +13,7 @@ Supported the following [sciter::value](http://terrainformatica.com/forums/topic
 * string (including #symbols)
 * bytes (as byte array)
 * array
-* map — requires `json_value_pair` type embedded in binary
+* map — requires a `json_value_pair` type placed in binary
 
 
 Not supported (yet):

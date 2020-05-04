@@ -5,7 +5,7 @@ sciter::value {
 	(
     #switch( $e.t )
     #case 0 ( #("undefined") )
-    #case 1 ( #("null") )
+    #case 1 ( #if( $e.u == 0 ) ("null") #else ("nothing") )
     #case 2 ( #if( $e.d == 0 ) ("false") #else ("true") )
     #case 3 ( #( (signed __int64)$e.d ) )
     #case 4 ( #( *(double*)&$e.d ) )
@@ -40,6 +40,7 @@ sciter::value {
     #case 17 ( #("duration(",  *(double*)&$e.d, ")") )
     #case 18 ( #("angle(",  *(double*)&$e.d, ")") )
     #case 19 ( #("color(", (void*)$e.d, ")") )
+    #case 21 ( #("asset") )
 
     #default ( "unknown" )
     #except  ( #([raw]: [$e,!]))

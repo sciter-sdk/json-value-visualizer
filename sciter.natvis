@@ -2,8 +2,9 @@
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
   <Type Name="sciter::value">
     <DisplayString Condition="t == 0">undefined</DisplayString>
-    <DisplayString Condition="t == 1">null</DisplayString>
-
+    <DisplayString Condition="t == 1 &amp;&amp; u == 0">null</DisplayString>
+    <DisplayString Condition="t == 1 &amp;&amp; u == 1">nothing</DisplayString>
+ 
     <DisplayString Condition="t == 2 &amp;&amp; d == 1">true</DisplayString>
     <DisplayString Condition="t == 2 &amp;&amp; d == 0">false</DisplayString>
 
@@ -13,6 +14,8 @@
     <DisplayString Condition="t == 5 &amp;&amp; u == 0">{(const wchar_t*)&amp;((size_t*)d)[3], su}</DisplayString>
     <DisplayString Condition="t == 5 &amp;&amp; u == 1">error({(const wchar_t*)&amp;((size_t*)d)[3], su})</DisplayString>
     <DisplayString Condition="t == 5 &amp;&amp; u == 2">secure({(const wchar_t*)&amp;((size_t*)d)[3], su})</DisplayString>
+    <DisplayString Condition="t == 5 &amp;&amp; u == 3">url({(const wchar_t*)&amp;((size_t*)d)[3], su})</DisplayString>
+    <DisplayString Condition="t == 5 &amp;&amp; u == 4">selector({(const wchar_t*)&amp;((size_t*)d)[3], su})</DisplayString>
     <DisplayString Condition="t == 5 &amp;&amp; u == 0xffff">#{(const wchar_t*)&amp;((size_t*)d)[3], su}</DisplayString>
 
     <DisplayString Condition="t == 6">date({d})</DisplayString>
@@ -36,8 +39,10 @@
     <DisplayString Condition="t == 17">duration({ *(double*)&amp;d })</DisplayString>
     <DisplayString Condition="t == 18">angle({ *(double*)&amp;d })</DisplayString>
     <DisplayString Condition="t == 19">color({ d, Xb })</DisplayString>
-    <DisplayString Condition="t > 19">&lt;unknown: {t}&gt;</DisplayString>
-
+    <DisplayString Condition="t == 20">enum</DisplayString>
+    <DisplayString Condition="t == 21">asset</DisplayString>
+    <DisplayString Condition="t > 21">&lt;unknown: {t}&gt;</DisplayString>
+ 
     <StringView Condition="t == 5">(const wchar_t*)&amp;((size_t*)d)[3], su</StringView>
 
     <Expand>
