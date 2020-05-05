@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
   <Type Name="sciter::value">
-    <DisplayString Condition="t == 0">undefined</DisplayString>
+    <DisplayString Condition="t == 0 &amp;&amp; u == 0">undefined</DisplayString>
+    <DisplayString Condition="t == 0 &amp;&amp; u == 1">nothing</DisplayString>
+
     <DisplayString Condition="t == 1 &amp;&amp; u == 0">null</DisplayString>
-    <DisplayString Condition="t == 1 &amp;&amp; u == 1">nothing</DisplayString>
- 
+
     <DisplayString Condition="t == 2 &amp;&amp; d == 1">true</DisplayString>
     <DisplayString Condition="t == 2 &amp;&amp; d == 0">false</DisplayString>
 
@@ -42,13 +43,13 @@
     <DisplayString Condition="t == 20">enum</DisplayString>
     <DisplayString Condition="t == 21">asset</DisplayString>
     <DisplayString Condition="t > 21">&lt;unknown: {t}&gt;</DisplayString>
- 
+
     <StringView Condition="t == 5">(const wchar_t*)&amp;((size_t*)d)[3], su</StringView>
 
     <Expand>
 
       <Synthetic Name="string" Condition="t == 5">
-      	<!-- 
+      	<!--
       		tool::string_t<CT>::data {
       		  atomic_long ref_count;
       		  size_t allocated;

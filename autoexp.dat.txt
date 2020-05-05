@@ -4,19 +4,19 @@ sciter::value {
 	preview
 	(
     #switch( $e.t )
-    #case 0 ( #("undefined") )
-    #case 1 ( #if( $e.u == 0 ) ("null") #else ("nothing") )
+    #case 0 ( #if( $e.u == 0 ) ("undefined") #else ("nothing") )
+    #case 1 ( #("null") )
     #case 2 ( #if( $e.d == 0 ) ("false") #else ("true") )
     #case 3 ( #( (signed __int64)$e.d ) )
     #case 4 ( #( *(double*)&$e.d ) )
-  
+
     #case 5 ( #if($e.u == 0) (
              #([(const wchar_t*)&((unsigned*)$e.d)[3], su] )
              )#else(
              #("b", [(const wchar_t*)&((unsigned*)$e.d)[3], su] )
              )
             )
-      
+
     #case 6 ( #("date(", $e.d,")") )
     #case 7 ( #("currency(", $e.d,")") )
     #case 8 ( #("length") )
@@ -53,7 +53,7 @@ sciter::value {
   children
   (
     #switch( $e.t )
-  
+
     #case 5 (#(
       count: ((unsigned*)$e.d)[1],
       refs: ((unsigned*)$e.d)[0],
